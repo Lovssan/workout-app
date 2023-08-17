@@ -1,5 +1,6 @@
 import { prisma } from '../prisma.js'
 import asyncHandler from 'express-async-handler'
+import { getMinutes } from './calculate-minutes.js'
 
 export const getWorkout = asyncHandler(async (req, res) => {
 	const workout = await prisma.workout.findUnique({
@@ -16,7 +17,7 @@ export const getWorkout = asyncHandler(async (req, res) => {
 		throw new Error('Workout is not found')
 	}
 
-	const minutes = Math.ceil(workout.exercises.length * 3.7)
+	const minutes = getMinutes(workout.exercises.length)
 
 	res.json({ ...workout, minutes })
 })

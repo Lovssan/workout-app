@@ -10,6 +10,7 @@ import userRouter from './app/user/user.routes.js'
 import exerciseRouter from './app/exercises/exrcise.routes.js'
 import path from 'path'
 import workoutRouter from './app/workout/workout.routes.js'
+import cors from 'cors'
 
 const app = express()
 
@@ -18,6 +19,7 @@ async function main() {
 		app.use(morgan('dev'))
 	}
 
+	app.use(cors())
 	app.use(bodyParser.json())
 
 	const __dirname = path.resolve()
