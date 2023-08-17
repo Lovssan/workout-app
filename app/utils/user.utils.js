@@ -3,6 +3,6 @@ export const UserFields = {
 	createdAt: true,
 	email: true,
 	images: true,
-	updateAt: true,
+	updatedAt: true,
 	name: true
 }

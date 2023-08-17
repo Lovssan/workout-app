@@ -8,6 +8,8 @@ import { errorHandler, notFound } from './app/middleware/error.middleware.js'
 import bodyParser from 'body-parser'
 import userRouter from './app/user/user.routes.js'
 import exerciseRouter from './app/exercises/exrcise.routes.js'
+import path from 'path'
+import workoutRouter from './app/workout/workout.routes.js'
 
 const app = express()
 
@@ -18,9 +20,14 @@ async function main() {
 
 	app.use(bodyParser.json())
 
+	const __dirname = path.resolve()
+
+	app.use('/uploads', express.static(path.join(__dirname, '/uploads')))
+
 	app.use('/api/auth', authRoutes)
 	app.use('/api/users', userRouter)
 	app.use('/api/exercises', exerciseRouter)
+	app.use('/api/workouts', workoutRouter)
 
 	app.use(notFound)
 	app.use(errorHandler)
