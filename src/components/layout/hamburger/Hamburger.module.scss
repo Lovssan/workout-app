@@ -1,0 +1,47 @@
+@import 'src/assets/styles/animation';
+@import 'src/assets/styles/variables';
+
+.wrapper {
+	position: relative;
+
+	button {
+		background-color: transparent;
+		border: none;
+		outline: none;
+		cursor: pointer;
+	}
+
+	.menu {
+		position: absolute;
+		color: #000;
+		top: calc(100% + 8px);
+		right: 0;
+		background-color: #fff;
+		padding: 10px 12px;
+		font-style: 14px;
+		box-shadow: $bx-16;
+		border-radius: 10px 0 10px 10px;
+		min-width: 116px;
+		display: none;
+		animation: opacity 0.4s;
+
+		&.show {
+			display: block;
+		}
+
+		> ul {
+			list-style: none;
+			a {
+				color: #000;
+				text-decoration: none;
+				transition: color 0.2s ease;
+
+				&.hover,
+				&.activate {
+					color: $accent;
+					margin: 4px 0;
+				}
+			}
+		}
+	}
+}
