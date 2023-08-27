@@ -2,7 +2,11 @@
 
 $accent: #b54371;
 $white: #f1e8e8;
-$black: #1a0612;
+$black: darken($accent, 38%);
+$hard-darken-accent: darken($accent, 20%);
+$dark-accent: darken($accent, 18%);
+
+$hb-size: 25px;
 
 $bx-accent: 0 4px 4px rgba($accent, 0.25);
 $bx-16: 0 3px 6px rgba(0, 0, 0, 0.16);

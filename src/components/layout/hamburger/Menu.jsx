@@ -1,9 +1,19 @@
-import styles from './Hamburger.module.scss'
-import cn from 'clsx'
-import { menu } from './menu.data'
+import { useAuth } from '../../../hooks/userAuth'
 
-const Menu = ({ isShow }) => {
-	const handleLogout = () => {}
+import { TOKEN } from '../../../app.constanse'
+import styles from './Hamburger.module.scss'
+import { menu } from './menu.data'
+import cn from 'clsx'
+import Cookies from 'js-cookie'
+import { Link } from 'react-router-dom'
+
+const Menu = ({ isShow, setIsShow }) => {
+	const { setIsAuth } = useAuth()
+	const handleLogout = () => {
+		Cookies.remove(TOKEN)
+		setIsAuth(false)
+		setIsShow(false)
+	}
 
 	return (
 		<nav
@@ -14,8 +24,7 @@ const Menu = ({ isShow }) => {
 			<ul>
 				{menu.map((item, index) => (
 					<li key={`_menu_${index}`}>
-						{item.title}
-						{/* <Link to={item.link}>{item.title}</Link> */}
+						<Link to={item.link}>{item.title}</Link>
 					</li>
 				))}
 				<li>
