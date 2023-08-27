@@ -1,5 +1,4 @@
-export const useAuth = boolean => {
-	return {
-		isAuth: boolean
-	}
-}
+import { AuthContext } from '../provides/AuthProvider'
+import { useContext } from 'react'
+
+export const useAuth = () => useContext(AuthContext)

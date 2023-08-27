@@ -10,10 +10,18 @@
 		outline: none;
 		cursor: pointer;
 	}
+	> button {
+		font-size: $hb-size;
+		> svg {
+			animation: opacity 0.8s;
+			> path {
+				fill: #fff;
+			}
+		}
+	}
 
 	.menu {
 		position: absolute;
-		color: #000;
 		top: calc(100% + 8px);
 		right: 0;
 		background-color: #fff;
