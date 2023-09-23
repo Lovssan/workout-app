@@ -1,69 +1,24 @@
-import { useAuth } from '../../../hooks/userAuth'
-
-import AuthService from '../../../services/auth.service'
-import Layout from '../../layout/Layout'
+import Alert from '../../ui/alert/Alert'
 import Button from '../../ui/button/Button'
 import Field from '../../ui/field/Field'
 import Loader from '../../ui/loader/Loader'
+
+import Layout from '../../layout/Layout'
 import styles from './Auth.module.scss'
-import { useMutation } from '@tanstack/react-query'
-import { useEffect, useState } from 'react'
-import { useForm } from 'react-hook-form'
-import { useNavigate } from 'react-router-dom'
+import { useAuthPage } from './useAuthPage'
 
 const Auth = () => {
-	const [type, setType] = useState('login')
-
 	const {
+		type,
 		register,
 		handleSubmit,
-		formState: { errors },
-		reset,
-		watch
-	} = useForm({
-		mode: 'onChange',
-		shouldUnregister: true
-	})
-
-	const navigate = useNavigate()
-
-	const { isAuth, setIsAuth } = useAuth()
-	useEffect(() => {
-		if (isAuth) navigate('/')
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [isAuth])
-
-	const { mutate, isLoading } = useMutation(
-		['auth'],
-		({ email, password }) => AuthService.main(type, email, password),
-		{
-			onSuccess: () => {
-				setIsAuth(true)
-				reset()
-			},
-			onError: () => {
-				if (type === 'login') {
-					alert('Email or password not correct')
-				}
-			}
-		}
-	)
-
-	const password = watch('password')
-
-	const onSubmit = data => {
-		mutate(data)
-	}
-
-	const toogleTypeLogin = () => {
-		if (type === 'register') {
-			setType('login')
-		} else {
-			setType('register')
-		}
-		reset()
-	}
-
+		errors,
+		isLoading,
+		onSubmit,
+		toogleTypeLogin,
+		password,
+		error
+	} = useAuthPage()
 	return (
 		<>
 			<Layout heading='Sign in' bgImage='/images/new-exercise-bg.jpg' />
@@ -72,6 +27,7 @@ const Auth = () => {
 				<button onClick={toogleTypeLogin} className={styles.sign}>
 					{type === 'register' ? 'Sign in' : 'Sign up'}
 				</button>
+				{error && <Alert type='error' text='Incorrect mail or password' />}
 				<form onSubmit={handleSubmit(onSubmit)}>
 					<Field
 						register={register}

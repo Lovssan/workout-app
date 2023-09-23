@@ -1,8 +1,10 @@
-import Layout from '../../layout/Layout'
+import { useNavigate } from 'react-router-dom'
+
 import Button from '../../ui/button/Button'
 import Statistics from '../../ui/statistic/Statistics'
+
+import Layout from '../../layout/Layout'
 import styles from './Home.module.scss'
-import { useNavigate } from 'react-router-dom'
 
 export const Home = () => {
 	const navigate = useNavigate()

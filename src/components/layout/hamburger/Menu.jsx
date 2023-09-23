@@ -1,11 +1,13 @@
+import cn from 'clsx'
+import Cookies from 'js-cookie'
+import { BiExit } from 'react-icons/bi'
+import { Link } from 'react-router-dom'
+
 import { useAuth } from '../../../hooks/userAuth'
 
 import { TOKEN } from '../../../app.constanse'
 import styles from './Hamburger.module.scss'
 import { menu } from './menu.data'
-import cn from 'clsx'
-import Cookies from 'js-cookie'
-import { Link } from 'react-router-dom'
 
 const Menu = ({ isShow, setIsShow }) => {
 	const { setIsAuth } = useAuth()
@@ -28,7 +30,9 @@ const Menu = ({ isShow, setIsShow }) => {
 					</li>
 				))}
 				<li>
-					<button onClick={handleLogout}>Logout</button>
+					<button onClick={handleLogout}>
+						Logout <BiExit />
+					</button>
 				</li>
 			</ul>
 		</nav>
