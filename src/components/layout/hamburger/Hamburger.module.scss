@@ -1,14 +1,23 @@
-@import 'src/assets/styles/animation';
-@import 'src/assets/styles/variables';
+@import '/src/assets/styles/animation';
+@import '/src/assets/styles/variables';
 
 .wrapper {
 	position: relative;
 
 	button {
+		display: flex;
+		align-items: center;
+		justify-content: end;
 		background-color: transparent;
 		border: none;
 		outline: none;
 		cursor: pointer;
+		font-size: 18px;
+		> svg {
+			> path {
+				fill: $dark-accent;
+			}
+		}
 	}
 	> button {
 		font-size: $hb-size;
@@ -26,7 +35,8 @@
 		right: 0;
 		background-color: #fff;
 		padding: 10px 12px;
-		font-style: 14px;
+		font-size: 18px;
+		white-space: nowrap;
 		box-shadow: $bx-16;
 		border-radius: 10px 0 10px 10px;
 		min-width: 116px;

@@ -2,6 +2,7 @@
 
 .input {
 	background-color: $dark-accent !important;
+	background: $dark-accent !important;
 	border: 1px solid transparent;
 	color: $white;
 	font-size: 16px;
@@ -12,11 +13,20 @@
 	width: 100%;
 
 	&:focus {
+		background-color: $dark-accent !important;
 		border-color: rgba($accent, 0.3);
 	}
 
 	&::placeholder {
 		color: #946e86;
+	}
+	&:-webkit-autofill,
+	&:-webkit-autofill:focus,
+	&:-webkit-autofill:hover,
+	&:-webkit-autofill:active {
+		transition:
+			background-color 0s 600000s,
+			color 0s 600000s;
 	}
 }
 

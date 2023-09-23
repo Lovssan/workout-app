@@ -1,8 +1,9 @@
-import { TOKEN } from '../app.constanse'
-import { useAuth } from './userAuth'
 import Cookies from 'js-cookie'
 import { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
+
+import { TOKEN } from '../app.constanse'
+import { useAuth } from './userAuth'
 
 export const useCheckToken = () => {
 	const { isAuth, setIsAuth } = useAuth()
